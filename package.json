@@ -1,10 +1,14 @@
 {
   "name": "@bitfinity-network/bitdns",
-  "version": "0.1",
+  "version": "0.1.0",
   "description": "Bitfinity Network DNS utils",
   "author": "Bitfinity <support@infinityswap.one> (https://bitfinity.network/)",
   "type": "module",
   "source": "src/index.ts",
+  "engines" : {
+    "npm" : ">=9.0.0",
+    "node" : ">=18.0.0"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
