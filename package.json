@@ -26,9 +26,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:ci": "jest --runInBand --ci",
-    "changeset": "changeset",
     "prettier": "prettier --write .",
-    "release": "yarn build && changeset publish"
+    "prepublishOnly": "rm -rf dist && npm run build"
   },
   "devDependencies": {
     "@babel/core": "^7.23.3",

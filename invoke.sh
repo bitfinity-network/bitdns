@@ -1,4 +1,4 @@
 curl -X POST \
      -H 'Content-Type: application/json' \
-     -d '{"resolve": {"name": "a"}}' \
-    "http://bkyz2-fmaaa-aaaaa-qaaaq-cai.localhost:4943"
+     -d '{"resolve": {"name": "testing.ic"}}' \
+    "https://ljanu-naaaa-aaaao-a25sq-cai.raw.icp0.io"
