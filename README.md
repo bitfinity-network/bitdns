@@ -31,4 +31,12 @@ for (let [suffix, canRegister] of Object.entries(namesAvailable)) {
     console.log(`mycooldomain.${suffix} is NOT available`);
   }
 }
+
+// Reverse resolving name by address
+const addresses1 = await resolveReverseByBtcAddress('bc1p5d7rjq7g6rdk2yhzks9smlaqtedr4dekq08ge8ztwac72sfr9rusxg3297');
+const addresses2 = await resolveReverseByEthAddress('0x71c7656ec7ab88b098defb751b7401b5f6d8976f');
+
+console.log(addresses1, addresses2);
 ```
+
+

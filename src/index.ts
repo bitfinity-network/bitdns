@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import { Principal } from '@dfinity/principal';
+import axios from 'axios';
 
 export interface Domain {
   name: string;
@@ -12,7 +13,9 @@ export interface Domain {
 }
 
 const bitdnsSettings = {
-  canisterUrl: process.env.CANISTER_URL ?? 'https://ljanu-naaaa-aaaao-a25sq-cai.raw.icp0.io'
+  canisterUrl:
+    process.env.CANISTER_URL ??
+    'https://ljanu-naaaa-aaaao-a25sq-cai.raw.icp0.io'
 };
 
 export type BitdnsSettings = typeof bitdnsSettings;
@@ -28,13 +31,11 @@ const request = async (params: {}) => {
   };
 
   try {
-    const response = await fetch(bitdnsSettings.canisterUrl, {
-      headers: BASE_HEADERS,
-      body: JSON.stringify(params),
-      method: 'POST'
+    const response = await axios.post(bitdnsSettings.canisterUrl, params, {
+      headers: BASE_HEADERS
     });
 
-    return await response.json();
+    return await response.data;
   } catch (_) {}
 
   return null;
@@ -47,6 +48,8 @@ export const available = async (
     const data = await request({ get_available_suffixes: { name } });
 
     if (
+      data !== null &&
+      typeof data === 'object' &&
       data.status === 'success' &&
       data.response !== null &&
       typeof data.response === 'object'
@@ -71,4 +74,64 @@ export const resolve = async (name: string): Promise<Domain | null> => {
   } catch (_) {}
 
   return null;
+};
+
+export const resolveReverseByPrincipal = async (
+  principal: Principal
+): Promise<Domain[]> => {
+  try {
+    const data = await request({ resolve: { principal: principal.toText() } });
+
+    if (
+      data !== null &&
+      typeof data === 'object' &&
+      data.status === 'success' &&
+      data.response !== null &&
+      typeof data.response === 'object'
+    ) {
+      return data.response;
+    }
+  } catch (_) {}
+
+  return [];
+};
+
+export const resolveReverseByBtcAddress = async (
+  address: string
+): Promise<Domain[]> => {
+  try {
+    const data = await request({ resolve: { bitcoin_address: address } });
+
+    if (
+      data !== null &&
+      typeof data === 'object' &&
+      data.status === 'success' &&
+      data.response !== null &&
+      typeof data.response === 'object'
+    ) {
+      return data.response;
+    }
+  } catch (_) {}
+
+  return [];
+};
+
+export const resolveReverseByEthAddress = async (
+  address: string
+): Promise<Domain[]> => {
+  try {
+    const data = await request({ resolve: { ethereum_address: address } });
+
+    if (
+      data !== null &&
+      typeof data === 'object' &&
+      data.status === 'success' &&
+      data.response !== null &&
+      typeof data.response === 'object'
+    ) {
+      return data.response;
+    }
+  } catch (_) {}
+
+  return [];
 };
