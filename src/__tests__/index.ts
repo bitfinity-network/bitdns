@@ -1,5 +1,3 @@
-import { Principal } from '@dfinity/principal';
-
 import {
   resolve,
   available,
@@ -41,9 +39,7 @@ describe('Availability', () => {
 
 describe('Reverse', () => {
   test('Reverse resolve by principle', async () => {
-    const [domain] = await resolveReverseByPrincipal(
-      Principal.fromText(TESTING_PRINCIPAL)
-    );
+    const [domain] = await resolveReverseByPrincipal(TESTING_PRINCIPAL);
 
     expect(domain?.name).toStrictEqual('testing.ic');
   });

@@ -77,10 +77,10 @@ export const resolve = async (name: string): Promise<Domain | null> => {
 };
 
 export const resolveReverseByPrincipal = async (
-  principal: Principal
+  principal: string
 ): Promise<Domain[]> => {
   try {
-    const data = await request({ resolve: { principal: principal.toText() } });
+    const data = await request({ resolve: { principal } });
 
     if (
       data !== null &&
