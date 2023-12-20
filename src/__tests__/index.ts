@@ -24,7 +24,7 @@ describe('Resolving', () => {
     const result = await resolve('testing.ic');
 
     expect(result?.name).toStrictEqual('testing.ic');
-    expect(result?.principal.toText()).toStrictEqual(TESTING_PRINCIPAL);
+    expect(result?.principal).toStrictEqual(TESTING_PRINCIPAL);
   });
 });
 

@@ -52,7 +52,6 @@
   "dependencies": {
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.2",
-    "@dfinity/principal": "^0.20.1",
     "axios": "^1.6.2",
     "dotenv": "^16.3.1"
   }
