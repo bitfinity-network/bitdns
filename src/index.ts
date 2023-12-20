@@ -1,10 +1,9 @@
 import 'dotenv/config';
-import { Principal } from '@dfinity/principal';
 import axios from 'axios';
 
 export interface Domain {
   name: string;
-  principal: Principal;
+  principal: string;
   bitcoin_p2tr_address?: string;
   bitcoin_p2wpkh_hash?: string;
   ethereum_address?: string;
@@ -68,7 +67,7 @@ export const resolve = async (name: string): Promise<Domain | null> => {
     if (data.status === 'success' && data.response.principal) {
       return {
         ...data.response,
-        principal: Principal.fromText(data.response.principal)
+        principal: data.response.principal
       };
     }
   } catch (_) {}
@@ -77,10 +76,10 @@ export const resolve = async (name: string): Promise<Domain | null> => {
 };
 
 export const resolveReverseByPrincipal = async (
-  principal: Principal
+  principal: string
 ): Promise<Domain[]> => {
   try {
-    const data = await request({ resolve: { principal: principal.toText() } });
+    const data = await request({ resolve: { principal } });
 
     if (
       data !== null &&

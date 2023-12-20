@@ -1,6 +1,6 @@
 {
   "name": "@bitfinity-network/bitdns",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Bitfinity Network DNS utils",
   "author": "Bitfinity <support@infinityswap.one> (https://bitfinity.network/)",
   "type": "module",
@@ -52,7 +52,6 @@
   "dependencies": {
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.2",
-    "@dfinity/principal": "^0.20.1",
     "axios": "^1.6.2",
     "dotenv": "^16.3.1"
   }
