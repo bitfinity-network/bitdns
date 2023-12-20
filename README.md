@@ -16,7 +16,7 @@ const domainInfo = await resolve('testing.ic');
 
 if (domainInfo) {
   console.log('Domain found');
-  console.log(`Registered principal: ${domainInfo.principal.toText()}`);
+  console.log(`Registered principal: ${domainInfo.principal}`);
 } else {
   console.log('Domain NOT found');
 }
