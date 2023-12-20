@@ -38,7 +38,7 @@ describe('Availability', () => {
 });
 
 describe('Reverse', () => {
-  test('Reverse resolve by principle', async () => {
+  test('Reverse resolve by principal', async () => {
     const [domain] = await resolveReverseByPrincipal(TESTING_PRINCIPAL);
 
     expect(domain?.name).toStrictEqual('testing.ic');
